@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>sniper saffron</title>
+</head>
+<body>
+  <p id="ego"></p>
+  <script>
+    const lamb1 = (a) => window.location.href = a;
+    function redirect() {
+      const input = document.getElementById("url").value;
+      let url;
+      if(input.startsWith("http")) {
+        url = encodeURI(input);
+        console.log(url)
+    } else if(input.includes(".com") || input.includes(".org")) {
+        url = "https://" + encodeURIComponent(input);
+        console.log(url)
+     } else {
+        url = "https://www.google.com/search?q=" + encodeURIComponent(input);
+        console.log(url)
+    } 
+      window.location.href = url;
+    }
+    document.getElementById('url').addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        redirect()
+      }
+    });
+  </script>
+  <input type="text" id="url" placeholder="seach something up lol"/>
+  <button onclick=redirect()> use. </button>
+</body>
+</html>
